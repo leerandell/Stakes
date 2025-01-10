@@ -1,0 +1,194 @@
+@import url('https://fonts.cdnfonts.com/css/casino');
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(to bottom right, rgb(7, 6, 0), rgb(126, 109, 11), rgb(7, 6, 0));
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+h1 {
+    text-align: center;
+    background: linear-gradient(to bottom right, rgb(209, 178, 1), rgb(243, 239, 200), rgb(206, 185, 0));
+    -webkit-text-stroke: 0.2px #998201;
+    font-family: 'Casino', sans-serif;
+    font-size: 90px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: bounce 2s infinite;
+}
+
+h2 {
+    text-align: center;
+    font-size: 120px;
+    margin: auto;
+}
+
+.balance {
+    font-size: 3.5em;
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Casino', sans-serif;
+}
+
+input {
+    width: calc(20% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 15%;
+    padding: 15px;
+    font-family: 'Casino', sans-serif;
+    background: linear-gradient(to right, #ffcc00, #ff9900); 
+    color: white;
+    border: 2px solid #b36b00;
+    border-radius: 50px; 
+    cursor: pointer;
+    font-size: 1.3em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(to right, #ff9900, #ffcc00);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.result {
+    margin: 20px 0;
+    font-family: 'Casino Flat', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #4200f8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.result:hover {
+    transform: scale(1.05);
+}
+
+.game-over {
+    text-align: center;
+    color: red;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.slider-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f9f9; /* Light background for the container */
+    border: 1px solid #ccc; /* Soft border around the container */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+}
+
+#multiplierSlider {
+    width: 100%;
+    transition: all 0.3s ease-in-out; /* Adds smooth transition */
+    width: 500px;
+    -webkit-appearance: none; /* Removes default styling */
+    appearance: none; /* Removes default styling */
+    background: #ddd; /* Background color of the slider track */
+    border-radius: 5px; /* Rounded corners for the track */
+    height: 8px; /* Height of the slider track */
+}
+
+/* Customize the handle of the slider */
+#multiplierSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Removes default styling */
+    appearance: none; /* Removes default styling */
+    width: 20px; /* Width of the thumb */
+    height: 20px; /* Height of the thumb */
+    border-radius: 50%; /* Rounded thumb */
+    background: #00ccff; /* Color of the thumb */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+#multiplierSlider::-moz-range-thumb {
+    width: 20px; /* Width of the thumb */
+    height: 20px; /* Height of the thumb */
+    border-radius: 50%; /* Rounded thumb */
+    background: #af9d4c; /* Color of the thumb */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+#multiplierValue {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 10px;
+    text-align: center; 
+    color: #333333; /* Text color for the multiplier value */
+}
+
+input[type="range"] {
+    display: block;
+    background-color: #bdc3c7;
+    width: 300px;
+    height: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+    outline: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #e74c3c;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+  }​
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background-color: white;
+      border: 2px solid #e74c3c;
+    }
+    input[type="range"]::-webkit-slider-thumb:active {
+      transform: scale(1.6);
+    }
