@@ -12,10 +12,19 @@
         <h2>💵</h2>
         <div class="slidecontainer">
             <input type="range" min="0" max="2" value="1" class="slider" step="0.01" id="multiplierSlider" disabled>
-            <div>Multiplier: <span id="multiplierValue">1.00x</span></div>
+            <div><span id="multiplierLabel">Multiplier: </span><span id="multiplierValue">1.00x</span></div>
         </div>
         <div id="balanceDisplay" class="balance">Your current balance: $100.00</div>
-        <input type="number" id="betInput" placeholder="Enter your bet amount" />
+
+        <div class="bet-buttons">
+            <button class="bet-amount" data-bet="1">$1</button>
+            <button class="bet-amount" data-bet="10">$10</button>
+            <button class="bet-amount" data-bet="50">$50</button>
+            <button class="bet-amount" data-bet="100">$100</button>
+            <button class="bet-amount" data-bet="500">$500</button>
+            <button id="allInButton">All In</button>
+        </div>
+
         <button id="betButton">Place Bet</button>
         <div id="result" class="result"></div>
         <div id="gameOver" class="game-over hidden"></div>
