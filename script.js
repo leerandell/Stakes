@@ -1,4 +1,3 @@
-// Grab elements from the DOM
 const betButtons = document.querySelectorAll('.bet-amount');
 const allInButton = document.getElementById('allInButton');
 const betButton = document.getElementById('betButton');
@@ -6,16 +5,23 @@ const balanceDisplay = document.getElementById('balanceDisplay');
 const resultDisplay = document.getElementById('result');
 const gameOverDisplay = document.getElementById('gameOver');
 const resetButton = document.getElementById('resetButton');
+const multiplierSlider = document.getElementById('multiplierSlider');
+const multiplierValue = document.getElementById('multiplierValue');
 
-let balance = 100.00;  // starting balance
-let currentBet = 0;  // current bet amount
+let balance = 100.00;
+let currentBet = 0;
+let multiplier = 1.00;
 
-// Update the balance display
 function updateBalance() {
     balanceDisplay.textContent = `Your current balance: $${balance.toFixed(2)}`;
 }
 
-// Handle regular bet button clicks
+function generateRandomMultiplier() {
+    multiplier = Math.random() * (2 - 1) + 1; // Random multiplier between 1 and 2
+    multiplierSlider.value = (multiplier - 1).toFixed(2); // Adjust the slider (0 to 1 range)
+    multiplierValue.textContent = `${multiplier.toFixed(2)}x`;
+}
+
 betButtons.forEach(button => {
     button.addEventListener('click', () => {
         currentBet = parseFloat(button.dataset.bet);
@@ -27,20 +33,16 @@ betButtons.forEach(button => {
     });
 });
 
-// Handle "All In" button click
 allInButton.addEventListener('click', () => {
     currentBet = balance;
     resultDisplay.textContent = `You are betting all in: $${currentBet}. Good luck!`;
 });
 
-// Handle the actual placing of the bet
 betButton.addEventListener('click', () => {
     if (currentBet > 0 && currentBet <= balance) {
-        // Random outcome for simplicity, adjust to actual game logic
+        generateRandomMultiplier();
         const outcome = Math.random();
-        const multiplier = 1 + (Math.random() * 2);  // Random multiplier between 1x and 3x
 
-        // If outcome is above 0.5, player wins
         if (outcome > 0.5) {
             const winnings = currentBet * multiplier;
             balance += winnings;
@@ -50,10 +52,8 @@ betButton.addEventListener('click', () => {
             resultDisplay.textContent = `You lost your bet of $${currentBet}. Better luck next time!`;
         }
 
-        // Update balance
         updateBalance();
 
-        // Check if game over
         if (balance <= 0) {
             gameOverDisplay.textContent = "Game Over! You've run out of money.";
             gameOverDisplay.classList.remove('hidden');
@@ -64,11 +64,15 @@ betButton.addEventListener('click', () => {
     }
 });
 
-// Reset game
 resetButton.addEventListener('click', () => {
-    balance = 100.00;  // Reset balance
+    balance = 100.00;
     updateBalance();
     resultDisplay.textContent = "";
     gameOverDisplay.classList.add('hidden');
     resetButton.classList.add('hidden');
+    multiplier = 1.00;
+    multiplierSlider.value = 0;
+    multiplierValue.textContent = `${multiplier.toFixed(2)}x`;
 });
+
+updateBalance();
