@@ -211,7 +211,7 @@ button:active {
 }
 
 #multiplierLabel {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Changing to a monospaced font */
     color: #000000;
     font-size: 1em;
     font-weight: normal;
