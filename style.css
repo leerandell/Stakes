@@ -2,16 +2,16 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: linear-gradient(to bottom right, rgb(7, 6, 0), rgb(126, 109, 11), rgb(7, 6, 0));
-    margin: 0;
-    padding: 20px;
+    background-image: linear-gradient(to top right, rgb(0, 0, 0), rgb(126, 109, 11),rgb(0, 0, 0));
+    margin-bottom: 30px;
+    padding: 50px;
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     flex-direction: column;
 }
 
@@ -37,13 +37,16 @@ h1 {
     background-clip: text;
     color: transparent;
     animation: bounce 2s infinite;
+    margin-bottom: -40px;
 }
 
 h2 {
     text-align: center;
-    font-size: 120px;
-    margin: auto;
+    font-size: 190px;
+    margin-top: 15px;
+    margin-bottom: 0;
 }
+
 
 .balance {
     font-size: 3.5em;
@@ -52,16 +55,68 @@ h2 {
     font-family: 'Casino', sans-serif;
 }
 
-input {
-    width: calc(20% - 22px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.bet-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-button {
+.bet-amount {
+    width: 100px;
+    padding: 10px;
+    font-family: 'Casino', sans-serif;
+    background: linear-gradient(to right, #5a007e, #4400ff);
+    color: white;
+    border: 2px solid #b36b00;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.bet-amount:hover {
+    background: linear-gradient(to right, #1fff32, #ffcc00);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.bet-amount:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.bet-amount.selected {
+    background: linear-gradient(to right, #00ccff, #0099cc);
+    color: #fff;
+    border-color: #006699;
+    transform: scale(1.1);
+}
+
+#allInButton {
+    width: 15%;
+    padding: 15px;
+    font-family: 'Casino', sans-serif;
+    background: linear-gradient(to right, #ff1e00, #40006b); 
+    color: white;
+    border: 2px solid #b36b00;
+    border-radius: 50px; 
+    cursor: pointer;
+    font-size: 1.3em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    transition: background 0.3s, transform 0.2s;
+}
+
+#allInButton:hover {
+    background: linear-gradient(to right, #1fff32, #ffcc00);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+#betButton {
     width: 15%;
     padding: 15px;
     font-family: 'Casino', sans-serif;
@@ -76,7 +131,7 @@ button {
     transition: background 0.3s, transform 0.2s;
 }
 
-button:hover {
+#betButton:hover {
     background: linear-gradient(to right, #ff9900, #ffcc00);
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
@@ -85,23 +140,6 @@ button:hover {
 button:active {
     transform: translateY(2px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-.result {
-    margin: 20px 0;
-    font-family: 'Casino Flat', sans-serif;
-    font-size: 1.2em;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid #4200f8;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-}
-
-.result:hover {
-    transform: scale(1.05);
 }
 
 .game-over {
@@ -122,49 +160,65 @@ button:active {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #f9f9f9; /* Light background for the container */
-    border: 1px solid #ccc; /* Soft border around the container */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px; 
+    padding: 20px;
 }
 
 #multiplierSlider {
-    width: 100%;
-    transition: all 0.3s ease-in-out; /* Adds smooth transition */
     width: 500px;
-    -webkit-appearance: none; /* Removes default styling */
-    appearance: none; /* Removes default styling */
-    background: #ddd; /* Background color of the slider track */
-    border-radius: 5px; /* Rounded corners for the track */
-    height: 8px; /* Height of the slider track */
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #ad1100 0%, #f39c12 50%, #00fc00 100%);
+    background-size: 100% 100%;
+    transition: background-size 0.3s ease;
+    outline: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Customize the handle of the slider */
 #multiplierSlider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Removes default styling */
-    appearance: none; /* Removes default styling */
-    width: 20px; /* Width of the thumb */
-    height: 20px; /* Height of the thumb */
-    border-radius: 50%; /* Rounded thumb */
-    background: #00ccff; /* Color of the thumb */
-    cursor: pointer; /* Change cursor on hover */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #fff, #f39c12);
+    border: 2px solid #e67e22;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-#multiplierSlider::-moz-range-thumb {
-    width: 20px; /* Width of the thumb */
-    height: 20px; /* Height of the thumb */
-    border-radius: 50%; /* Rounded thumb */
-    background: #af9d4c; /* Color of the thumb */
-    cursor: pointer; /* Change cursor on hover */
+#multiplierSlider::-webkit-slider-thumb:hover {
+    background: radial-gradient(circle, #f39c12, #e74c3c);
+    transform: scale(1.2);
+}
+
+#multiplierSlider::-webkit-slider-thumb:active {
+    transform: scale(1.4);
+    background: radial-gradient(circle, #2ecc71, #16a085);
 }
 
 #multiplierValue {
     font-weight: bold;
-    font-size: 1.2em;
-    margin-top: 10px;
-    text-align: center; 
-    color: #333333; /* Text color for the multiplier value */
+    font-size: 1.5em;
+    margin-top: 15px;
+    color: #4cff64;
+    text-shadow: 1px 1px 2px rgb(255, 123, 0);
+    transition: color 0.3s ease;
 }
+
+#multiplierLabel {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #000000;
+    font-size: 1em;
+    font-weight: normal;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+
 
 input[type="range"] {
     display: block;
@@ -192,3 +246,4 @@ input[type="range"] {
     input[type="range"]::-webkit-slider-thumb:active {
       transform: scale(1.6);
     }
+    
