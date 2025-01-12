@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stakes Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Stakes Game!</h1>
+        <h2>💵</h2>
+        <div class="slidecontainer"><input type="range" min="0" max="1" value="0.5" class="slider" step="0.01" id="multiplierSlider" disabled>
+            <div><span id="multiplierLabel">Multiplier: </span><span id="multiplierValue">1.00x</span></div>
+        </div>
+        <div id="balanceDisplay" class="balance">Your current balance: $100.00</div>
+
+        <div class="bet-buttons">
+            <button class="bet-amount" data-bet="1">$1</button>
+            <button class="bet-amount" data-bet="10">$10</button>
+            <button class="bet-amount" data-bet="50">$50</button>
+            <button class="bet-amount" data-bet="100">$100</button>
+            <button class="bet-amount" data-bet="500">$500</button>
+            <button id="allInButton">All In</button>
+        </div>
+
+        <button id="betButton">Place Bet</button>
+        <div id="result" class="result"></div>
+        <div id="gameOver" class="game-over hidden"></div>
+        <button id="resetButton" class="hidden">Reset Game</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
