@@ -1,7 +1,7 @@
-@import url('https://fonts.cdnfonts.com/css/casino');
+@import url('https://fonts.cdnfonts.com/css/grand-casino');
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Grand Casino', sans-serif;
     background-image: linear-gradient(to top right, rgb(0, 0, 0), rgb(126, 109, 11),rgb(0, 0, 0));
     margin-bottom: 30px;
     padding: 50px;
@@ -31,7 +31,7 @@ h1 {
     text-align: center;
     background: linear-gradient(to bottom right, rgb(209, 178, 1), rgb(243, 239, 200), rgb(206, 185, 0));
     -webkit-text-stroke: 0.2px #998201;
-    font-family: 'Casino', sans-serif;
+    font-family: 'Grand Casino', sans-serif;                                             
     font-size: 90px;
     -webkit-background-clip: text;
     background-clip: text;
@@ -52,7 +52,7 @@ h2 {
     font-size: 3.5em;
     text-align: center;
     margin: 20px 0;
-    font-family: 'Casino', sans-serif;
+    font-family: 'Grand Casino', sans-serif;
 }
 
 .bet-buttons {
@@ -65,7 +65,7 @@ h2 {
 .bet-amount {
     width: 100px;
     padding: 10px;
-    font-family: 'Casino', sans-serif;
+    font-family: 'Grand Casino', sans-serif;                                              
     background: linear-gradient(to right, #5a007e, #4400ff);
     color: white;
     border: 2px solid #b36b00;
@@ -93,12 +93,13 @@ h2 {
     color: #fff;
     border-color: #006699;
     transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6); /* Added shadow for visual effect */
 }
 
 #allInButton {
     width: 15%;
     padding: 15px;
-    font-family: 'Casino', sans-serif;
+    font-family: 'Grand Casino', sans-serif;                                               
     background: linear-gradient(to right, #ff1e00, #40006b); 
     color: white;
     border: 2px solid #b36b00;
@@ -116,10 +117,19 @@ h2 {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
 }
 
+#allInButton.selected {
+    background: linear-gradient(to right, #00ccff, #0099cc);
+    color: #fff;
+    border-color: #006699;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+
 #betButton {
     width: 15%;
     padding: 15px;
-    font-family: 'Casino', sans-serif;
+    font-family: 'Grand Casino', sans-serif;                                               
     background: linear-gradient(to right, #ffcc00, #ff9900); 
     color: white;
     border: 2px solid #b36b00;
@@ -211,13 +221,12 @@ button:active {
 }
 
 #multiplierLabel {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Changing to a monospaced font */
+    font-family: 'Grand Casino', sans-serif; /* Changing to a monospaced font */
     color: #000000;
     font-size: 1em;
     font-weight: normal;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
-
 
 
 input[type="range"] {
