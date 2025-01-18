@@ -1,4 +1,3 @@
-// Element References
 const betButtons = document.querySelectorAll('.bet-amount');
 const allInButton = document.getElementById('allInButton');
 const betButton = document.getElementById('betButton');
@@ -9,59 +8,62 @@ const resetButton = document.getElementById('resetButton');
 const multiplierSlider = document.getElementById('multiplierSlider');
 const multiplierValue = document.getElementById('multiplierValue');
 
-// Initial Variables
-let balance = 100.00;
-let currentBet = 0;
-let multiplier = 1.00;
 
-// Update balance display
+let balance = 100.0;
+let currentBet = 0;
+let multiplier = 1.0;
+
 function updateBalance() {
     balanceDisplay.textContent = `Your current balance: $${balance.toFixed(2)}`;
 }
 
-// Generate a random multiplier
 function generateRandomMultiplier() {
     const outcome = Math.random();
-    if (outcome < 0.6) {
-        multiplier = (Math.random() * 0.89) + 0.1; // Loss multiplier (0.1 - 0.99)
-    } else {
-        multiplier = (Math.random() * 0.9) + 1.1; // Win multiplier (1.1 - 2.0)
-    }
+    multiplier = outcome < 0.6 
+        ? (Math.random() * 0.89) + 0.1
+        : (Math.random() * 0.9) + 1.1;
     multiplierSlider.value = multiplier;
     multiplierValue.textContent = `${multiplier.toFixed(2)}x`;
 }
 
-// Clear all selected button states
 function clearSelection() {
     betButtons.forEach(button => button.classList.remove('selected'));
     allInButton.classList.remove('selected');
 }
 
-// Handle individual bet buttons
+function showResult(message, outcomeClass = "") {
+    resultDisplay.className = `result ${outcomeClass}`;
+    resultDisplay.textContent = message;
+    resultDisplay.style.display = "block";
+}
+
 betButtons.forEach(button => {
     button.addEventListener('click', () => {
         clearSelection();
         button.classList.add('selected');
         currentBet = parseFloat(button.dataset.bet);
 
-        // Ensure the bet doesn't exceed the balance
         if (currentBet <= balance) {
-            resultDisplay.textContent = `You chose to bet $${currentBet}. Good luck!`;
+            showResult(`You chose to bet $${currentBet}. Good luck!`, "bet-choice");
         } else {
-            resultDisplay.textContent = `Insufficient funds for this bet.`;
+            showResult(`Insufficient funds for this bet.`, "error");
         }
     });
 });
 
-// Handle All In button
 allInButton.addEventListener('click', () => {
     clearSelection();
     allInButton.classList.add('selected');
-    currentBet = balance; // Set the bet to the current balance
-    resultDisplay.textContent = `You are betting all in: $${currentBet.toFixed(2)}. Good luck!`;
+    currentBet = balance;
+    showResult(`You are betting all in: $${currentBet.toFixed(2)}. Good luck!`, "bet-choice");
 });
 
-// Handle Bet action
+function showResult(message, outcomeClass = "") {
+    resultDisplay.className = `result ${outcomeClass}`;
+    resultDisplay.innerHTML = message; // Use innerHTML to render HTML tags
+    resultDisplay.style.display = "block";
+}
+
 betButton.addEventListener('click', () => {
     if (currentBet > 0 && currentBet <= balance) {
         generateRandomMultiplier();
@@ -69,11 +71,15 @@ betButton.addEventListener('click', () => {
         if (multiplier < 1) {
             const lossAmount = currentBet * multiplier;
             balance -= lossAmount;
-            resultDisplay.textContent = `You lost $${lossAmount.toFixed(2)} with a multiplier of ${multiplier.toFixed(2)}. Better luck next time!`;
+            showResult(`YOU LOST.<br> YOU LOST $${lossAmount.toFixed(2)} with a multiplier of ${multiplier.toFixed(2)}.`, "lose");
         } else {
             const winnings = currentBet * multiplier;
             balance += winnings;
-            resultDisplay.textContent = `You won! You received $${winnings.toFixed(2)} with a multiplier of ${multiplier.toFixed(2)}.`;
+            showResult(`YOU WON!<br>You received $${winnings.toFixed(2)} with a multiplier of ${multiplier.toFixed(2)}.`, "win");
+            // Trigger confetti when the player wins
+            import('https://cdn.skypack.dev/canvas-confetti').then(confetti => {
+                confetti.default();
+            });
         }
 
         updateBalance();
@@ -84,22 +90,21 @@ betButton.addEventListener('click', () => {
             resetButton.classList.remove('hidden');
         }
     } else {
-        resultDisplay.textContent = `Insufficient funds for this bet.`;
+        showResult(`Insufficient funds for this bet.`, "error");
     }
 });
 
-// Reset the game
+
 resetButton.addEventListener('click', () => {
-    balance = 100.00;
+    balance = 100.0;
     updateBalance();
-    resultDisplay.textContent = "";
+    resultDisplay.style.display = "none";
     gameOverDisplay.classList.add('hidden');
     resetButton.classList.add('hidden');
-    multiplier = 1.00;
+    multiplier = 1.0;
     multiplierSlider.value = multiplier;
     multiplierValue.textContent = `${multiplier.toFixed(2)}x`;
     clearSelection();
 });
 
-// Initialize balance on page load
 updateBalance();
