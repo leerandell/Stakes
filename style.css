@@ -2,9 +2,9 @@
 
 body {
     font-family: 'Grand Casino', sans-serif;
-    background-image: linear-gradient(to top right, rgb(0, 0, 0), rgb(126, 109, 11),rgb(0, 0, 0));
+    background-image: linear-gradient(to top, rgb(0, 0, 0),rgb(126, 51, 41),rgb(158, 132, 0), rgb(126, 51, 41),rgb(0, 0, 0));
     margin-bottom: 30px;
-    padding: 50px;
+    padding: 120px;
 }
 
 .container {
@@ -125,6 +125,21 @@ h2 {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
 }
 
+.bet-choice {
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff; /* White text for contrast */
+    background-color: #2196f3; /* Blue background */
+    border: 2px solid #1976d2;
+    border-radius: 8px;
+    display: none; /* Initially hidden */
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
 
 #betButton {
     width: 15%;
@@ -221,13 +236,55 @@ button:active {
 }
 
 #multiplierLabel {
-    font-family: 'Grand Casino', sans-serif; /* Changing to a monospaced font */
+    font-family: 'Grand Casino', sans-serif;
     color: #000000;
     font-size: 1em;
     font-weight: normal;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+    color: #fff;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.result.win {
+    background: linear-gradient(to bottom right, rgb(0, 153, 77), rgb(149, 207, 180), rgb(0, 153, 77));
+    border: 2px solid #307433;
+    box-shadow: 0 4px 10px rgba(72, 187, 120, 0.6);
+}
+
+.result.lose {
+    background: linear-gradient(to bottom right, rgb(148, 43, 39), rgb(255, 147, 147), rgb(148, 43, 39));
+    border: 2px solid #741010;
+    box-shadow: 0 4px 10px rgba(244, 67, 54, 0.6);
+}
+
+.result.info {
+    background-color: #2196f3;
+    border: 2px solid #1976d2;
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.6);
+}
+
+.game-over {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #ff9800;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.6);
+    animation: fadeIn 0.5s ease-in-out;
+}
 
 input[type="range"] {
     display: block;
@@ -251,8 +308,8 @@ input[type="range"] {
     input[type="range"]::-webkit-slider-thumb:hover {
       background-color: white;
       border: 2px solid #e74c3c;
-    }
+}
     input[type="range"]::-webkit-slider-thumb:active {
       transform: scale(1.6);
-    }
+}
     
